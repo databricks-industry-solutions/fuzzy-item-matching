@@ -1,4 +1,9 @@
 # Databricks notebook source
+# MAGIC %md 
+# MAGIC You may find this series of notebooks at https://github.com/databricks-industry-solutions/fuzzy-item-matching. For more information about this solution accelerator, visit https://www.databricks.com/solutions/accelerators/product-matching-with-ml.
+
+# COMMAND ----------
+
 # MAGIC %md The purpose of this notebook is access the data and generate the features used in later notebooks.
 
 # COMMAND ----------
