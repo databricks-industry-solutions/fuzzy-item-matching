@@ -79,7 +79,7 @@ display(labeled_features.limit(3))
 
 # COMMAND ----------
 
-# MAGIC %md The features retreived for each product provide numerical representations of its name, description and price attributes. The similarity between these products can now be calculated in terms of the distance between these numerical representations.  While there are many ways to do this, we might simply calculate a squared Euclidean distance between each attribute. This is most easily addressed using Scala which has native support for the vector type use for each feature:
+# MAGIC %md The features retrieved for each product provide numerical representations of its name, description and price attributes. The similarity between these products can now be calculated in terms of the distance between these numerical representations.  While there are many ways to do this, we might simply calculate a squared Euclidean distance between each attribute. This is most easily addressed using Scala which has native support for the vector type use for each feature:
 
 # COMMAND ----------
 
@@ -145,9 +145,9 @@ print(
 
 # MAGIC %md ## Step 2: Tune Model Parameters
 # MAGIC 
-# MAGIC We've approched the task of identifying matches as a binary classification problem. There are many, many algorithms we might employ for such this kind of problem.  We have decided to use the [XGBoostClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier) given its demonstrated performance.
+# MAGIC We've approached the task of identifying matches as a binary classification problem. There are many, many algorithms we might employ for such this kind of problem.  We have decided to use the [XGBoostClassifier](https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier) given its demonstrated performance.
 # MAGIC 
-# MAGIC The downside of using XGBoost is that it's models employ a large number of hyperparameters, many of which interact to have sizeable impacts on model performance.  To overcome this problem, we will run through a number of iterations of the model using different hyperparameter settings.  To ensure this is efficient, we will make use of [hyperopt](http://hyperopt.github.io/hyperopt/) to intelligently search the hyperparameter values and [distibute](http://hyperopt.github.io/hyperopt/scaleout/spark/) the iterative work across the workers of our cluster:
+# MAGIC The downside of using XGBoost is that it's models employ a large number of hyperparameters, many of which interact to have sizeable impacts on model performance.  To overcome this problem, we will run through a number of iterations of the model using different hyperparameter settings.  To ensure this is efficient, we will make use of [hyperopt](http://hyperopt.github.io/hyperopt/) to intelligently search the hyperparameter values and [distribute](http://hyperopt.github.io/hyperopt/scaleout/spark/) the iterative work across the workers of our cluster:
 
 # COMMAND ----------
 
@@ -242,7 +242,7 @@ y_validate_broadcast = sc.broadcast(y_validate)
 
 # DBTITLE 1,Tune Model
 # perform evaluation
-with mlflow.start_run(run_name='XGBClassifer'):
+with mlflow.start_run(run_name='XGBClassifier'):
   argmin = fmin(
     fn=evaluate_model,
     space=search_space,
@@ -377,7 +377,7 @@ last_pipeline_run = client.search_runs(
 pipelines = {'name_pipeline':None, 'descript_pipeline':None, 'price_pipeline':None}
 for pipeline in pipelines:
   
-  for i in range(3): # error handling to deal with occastional timeouts
+  for i in range(3): # error handling to deal with occasional timeouts
     try:
       # retrieve pipeline
       pipeline_path = client.download_artifacts(
@@ -409,7 +409,7 @@ last_lshmodel_run = client.search_runs(
 lshmodels = {'name_lsher':None, 'descript_lsher':None}
 for lshmodel in lshmodels:
   
-  for i in range(3): # error handling to deal with occastional timeouts
+  for i in range(3): # error handling to deal with occasional timeouts
     try:
       # retrieve lsh models
       lshmodel_path = client.download_artifacts(
