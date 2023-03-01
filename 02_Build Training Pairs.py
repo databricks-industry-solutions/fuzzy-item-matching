@@ -55,7 +55,7 @@ display(features.limit(3))
 # MAGIC 
 # MAGIC **NOTE** For a deeper dive into LSH, please review the notebooks associated with our [recommender blog post](https://databricks.com/blog/2020/12/18/personalizing-the-customer-experience-with-recommendations.html).
 # MAGIC 
-# MAGIC **NOTE** MinHashLSH is also commonly used in NLP applications. With that algorithm, the Jaccard similarity between objects is compared.  The input vectors are typically set to 0 or 1 indicating the presence of a value in a set.  If using MinHashLSH, be sure to exclude high-frequency n-grams as their low IDF scores will still be interpretted as indicators of the presence of the n-gram and will cause them to be given equal consideration with the others.
+# MAGIC **NOTE** MinHashLSH is also commonly used in NLP applications. With that algorithm, the Jaccard similarity between objects is compared.  The input vectors are typically set to 0 or 1 indicating the presence of a value in a set.  If using MinHashLSH, be sure to exclude high-frequency n-grams as their low IDF scores will still be interpreted as indicators of the presence of the n-gram and will cause them to be given equal consideration with the others.
 
 # COMMAND ----------
 
@@ -78,7 +78,7 @@ display(
 
 # COMMAND ----------
 
-# MAGIC %md With our pipeline assembled, we can now use it to find similar products.  We'll fit the model using our combined Abt and Buy datasets and then perform an approximate similiarity join between these to find likely matches:
+# MAGIC %md With our pipeline assembled, we can now use it to find similar products.  We'll fit the model using our combined Abt and Buy datasets and then perform an approximate similarity join between these to find likely matches:
 
 # COMMAND ----------
 
